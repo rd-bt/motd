@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
+#include <stdarg.h>
 #include <err.h>
 #include <errno.h>
 #include <time.h>
@@ -579,7 +580,7 @@ void show_players(struct json_node *jn){
 					//x=0;
 					p=jn_find(a[i]->data,"name",4);
 					if(p&&p->type==JSON_STRING){
-						fprintf(stdout,"%s",(char *)p->data);
+						fprintf(stdout,"%s\n",(char *)p->data);
 						//x=1;
 					}
 					/*p=jn_find(a[i]->data,"id",2);
@@ -1024,7 +1025,6 @@ void show_help(const char *a0){
 			"\t--help, -h\tshow this help\n"
 			"\t--interval, -i interval(s)\tinterval between two requests,default %lg\n"
 			"\t--no-recv, -n\t do not receive the packet from server\n"
-			"\t--read\t\n"
 			"\t--stdout, -C\twrite the json returned by server to stdout\n"
 			"\t--thread, -T thread_amount\tdefault %u\n"
 			"\t--timeout, -t timeout(ms)\ttimeout for connection and reading socket,default %d\n"
