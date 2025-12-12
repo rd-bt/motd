@@ -764,7 +764,8 @@ ssize_t motd_read(int fd,int timeout,char **buf,size_t *bufsz){
 	ssize_t r;
 	int sz_json;
 	char val;
-	read_varint(fd,timeout,&sz);
+	if(read_varint(fd,timeout,&sz)<1)
+		return -1;
 	if(socket_read(fd,&val,1,timeout)<1)
 		return -1;
 	if(val)
